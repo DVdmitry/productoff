@@ -1,1 +1,141 @@
 /* You can add global styles to this file, and also import other style files */
+.carousel-text {
+  color: white !important;
+  text-shadow:
+    black -2px -2px 1px,
+    white -1px -1px 1px,
+    black 1px 1px 1px,
+    white 2px 2px 1px,
+    black 4px 4px 4px;
+}
+.jumbotron {
+  padding-top: 0px;
+  padding-bottom: 5px;
+}
+.jumbotron h1{
+  text-align: center;
+}
+.jumbotron p{
+  padding-left: 1em;
+}
+
+.selected {
+  background-color: #CFD8DC !important;
+  color: white;
+}
+.product-groups {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 15em;
+}
+.product-groups li {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .5em;
+  padding: 0.1em 0;
+  height: 2em;
+  border-radius: 4px;
+}
+.product-groups li.selected:hover {
+  background-color: #BBD8DC !important;
+  color: white;
+}
+.product-groups li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}
+.product-groups .text {
+  position: relative;
+  top: -3px;
+}
+.product-groups .badge {
+  display: inline-block;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: #607D8B;
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 2.2em;
+  top: -.05em;
+  margin-right: .8em;
+  border-radius: 4px 0 0 4px;
+}
+.selected-product:hover {
+  background-color: #BBD8DC !important;
+  color: white;
+}
+.selected-product:hover .bigger{
+  color: darkred;
+}
+
+.cart {
+  min-height: 300px;
+  min-width: 550px;
+  max-width: 550px;
+}
+
+.table-space {
+  width: 750px;
+ }
+
+.cart li {
+  /*background-color: #007BFF;*/
+  /*background-color: #17A2B8;*/
+  background-color: #EEEEEE;
+  border-radius: 3%;
+  margin: 4px 0 0 4px;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.to-cart-product{
+  min-width: 550px;
+  list-style-type: none;
+  text-align: start;
+  vertical-align: top;
+
+}
+
+.cart-product-name  {
+  width: 160px;
+}
+
+.cart-product-scale {
+  width: 40px;
+}
+
+.cart-product-price {
+  width: 70px;
+}
+
+.inline {
+  display: inline;
+}
+.inline-block {
+  display: inline-block;
+}
+
+.quantity {
+  width: 40px;
+}
+
+caption {
+  caption-side: top;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.product-group-name{
+  color: white;
+  text-shadow: blue 2px 2px 2px;
+}

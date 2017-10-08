@@ -1,10 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div class = "text-center">
+  <h1 class = "display-4 text-primary">Моя корзина</h1>
+  <div *ngIf = "selectedProducts.length === 0 && customersCart.length === 0">
+      <img src="https://s3.amazonaws.com/znizhki/cart.svg">
+  </div>
+
+
+  <ul *ngIf = "selectedProducts.length !== 0 && customersCart === 0" class="to-cart-product">
+    <li><span class="cart-product-name inline-block align-top">Наименование</span>
+      <span class = 'inline-block quantity align-top'>Кол-во</span>
+      <span class="cart-product-scale inline-block align-top">Ед. изм.</span>
+      <span class="cart-product-price inline-block align-top">Ст-ть</span>
+      <span class="cart-product-price inline-block align-top">Экономия</span>
+    </li>
+    <li *ngFor = "let item of selectedProducts">
+      <span class="cart-product-name inline-block align-top">{{item.name}}</span>
+      <input [(ngModel)] = "item.quantity" (change) = "setTotalPrice()" (change) = "setTotalDiscount()" placeholder = "1" class = 'align-top inline-block quantity'>
+      <span class="cart-product-scale inline-block align-top">{{item.scale}}</span>
+      <span *ngIf = "item.totalPrice === 1" class="cart-product-price inline-block align-top">{{item.salePrice}} руб.</span>
+      <span *ngIf = "item.totalPrice !== 1" class="cart-product-price inline-block align-top">{{item.totalPrice}} руб.</span>
+      <span *ngIf = "item.totalDiscount === 1" class="cart-product-price inline-block align-top">{{item.saveMoney}} руб.</span>
+      <span *ngIf = "item.totalDiscount !== 1" class="cart-product-price inline-block align-top">{{item.totalDiscount}} руб.</span>
+      <button type="button" class="btn btn-primary btn-outline-primary" (click) = "clearRow(item)">Удалить</button>
+    </li>
+    <br>
+    <li *ngIf = "totalWholeSave !== 0">
+      <b>
+        <span class="cart-product-name inline-block align-top">Общая экономия</span>
+        <span class = 'inline-block quantity align-top'>{{totalWholeSave}}</span>
+      </b>
+    </li>
+    <br>
+    <button type="button" class="btn btn-primary btn-lg btn-outline-primary btn-block" (click) = "getSavings()">Посчитать экономию</button>
+    <button type="button" class="btn btn-primary btn-lg btn-outline-primary btn-block" (click) = "saveCustomerCart()">Сохранить</button>
+
+  </ul>
+
+
+  <ul *ngIf = "customersCart !== undefined" class="to-cart-product">
+    <li><span class="cart-product-name inline-block align-top">Наименование</span>
+      <span class = 'inline-block quantity align-top'>Кол-во</span>
+      <span class="cart-product-scale inline-block align-top">Ед. изм.</span>
+      <span class="cart-product-price inline-block align-top">Ст-ть</span>
+      <span class="cart-product-price inline-block align-top">Экономия</span>
+    </li>
+
+    <li *ngFor = "let item of customersCart">
+      <span class="cart-product-name inline-block align-top">{{item.name}}</span>
+      <input [(ngModel)] = "item.quantity" (change) = "setTotalPrice()" (change) = "setTotalDiscount()" placeholder = "1" class = 'align-top inline-block quantity'>
+      <span class="cart-product-scale inline-block align-top">{{item.scale}}</span>
+      <span *ngIf = "item.totalPrice === 1" class="cart-product-price inline-block align-top">{{item.salePrice}} руб.</span>
+      <span *ngIf = "item.totalPrice !== 1" class="cart-product-price inline-block align-top">{{item.totalPrice}} руб.</span>
+      <span *ngIf = "item.totalDiscount === 1" class="cart-product-price inline-block align-top">{{item.saveMoney}} руб.</span>
+      <span *ngIf = "item.totalDiscount !== 1" class="cart-product-price inline-block align-top">{{item.totalDiscount}} руб.</span>
+      <button type="button" class="btn btn-primary btn-outline-primary" (click) = "clearRow(item)">Удалить</button>
+    </li>
+
+    <li *ngFor = "let item of selectedProducts">
+      <span class="cart-product-name inline-block align-top">{{item.name}}</span>
+      <input [(ngModel)] = "item.quantity" (change) = "setTotalPrice()" (change) = "setTotalDiscount()" placeholder = "1" class = 'align-top inline-block quantity'>
+      <span class="cart-product-scale inline-block align-top">{{item.scale}}</span>
+      <span *ngIf = "item.totalPrice === 1" class="cart-product-price inline-block align-top">{{item.salePrice}} руб.</span>
+      <span *ngIf = "item.totalPrice !== 1" class="cart-product-price inline-block align-top">{{item.totalPrice}} руб.</span>
+      <span *ngIf = "item.totalDiscount === 1" class="cart-product-price inline-block align-top">{{item.saveMoney}} руб.</span>
+      <span *ngIf = "item.totalDiscount !== 1" class="cart-product-price inline-block align-top">{{item.totalDiscount}} руб.</span>
+      <button type="button" class="btn btn-primary btn-outline-primary" (click) = "clearRow(item)">Удалить</button>
+    </li>
+    <br>
+    <li *ngIf = "totalWholeSave !== 0">
+      <b>
+        <span class="cart-product-name inline-block align-top">Общая экономия</span>
+        <span class = 'inline-block quantity align-top'>{{totalWholeSave}}</span>
+      </b>
+    </li>
+    <br>
+    <button *ngIf = "saveButton.length === 1" type="button" class="btn btn-primary btn-lg btn-outline-primary btn-block" (click) = "setTotalDiscount()">Посчитать экономию</button>
+    <button type="button" class="btn btn-primary btn-lg btn-outline-primary btn-block" (click) = "saveCustomerCart(); getSavingButton()" >Сохранить</button>
+
+  </ul>
+
+</div>
+

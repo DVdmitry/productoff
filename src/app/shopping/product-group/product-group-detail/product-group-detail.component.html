@@ -1,10 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div *ngIf = "productGroup">
+<div class="jumbotron">
+  <h1 class="display-3 product-group-name">{{productGroup.name}}</h1>
+</div>
+<div class = "container-fluid">
+  <div class = "d-flex flex-wrap">
+    <div class = "d-flex flex-wrap table-space">
+      <table width = 70% border = 1>
+        <caption><h1 class = "display-4 text-primary">Товары</h1></caption>
+        <tr valign = "top">
+          <th *ngFor = 'let header of tableHeader'>
+            {{header}}
+          </th>
+        </tr>
+        <tr *ngFor = "let product of productGroup.productList" (click)= "toCart(product)" class = "selected-product">
+          <td class = "bigger">
+          {{product.name}}
+        </td>
+          <td>
+            {{product.shop}}
+          </td>
+          <td>
+            {{product.scale}}
+          </td>
+          <td>
+            {{product.regularPrice}}
+          </td>
+          <td>
+            {{product.salePrice}}
+          </td>
+          <td class = "bigger">
+            {{product.saveMoney}}
+          </td>
+          <td>
+          {{product.savePercent}}%
+          </td>
+          <td>
+            {{product.competitorPrice}}
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class = "cart d-flex flex-wrap">
+      <app-cart-component [selectedProducts] = "cartProducts"></app-cart-component>
+    </div>
+  </div>
+</div>
+</div>
+
